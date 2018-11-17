@@ -3,6 +3,7 @@ require('normalize.css/normalize.css');
 require('styles/main.scss');
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 // let yeomanImage = require('../images/yeoman.png');
 
@@ -104,7 +105,7 @@ class AppComponent extends React.Component {
       imgsArrangeTopArr[index].pos = {
         top: getRangeRandom(vPostRangeTopY[0], vPostRangeTopY[1]),
         left: getRangeRandom(vPostRangeX[0], vPostRangeX[1])
-      }
+      };
     });
 
      //布局左右两侧的图片
@@ -121,7 +122,7 @@ class AppComponent extends React.Component {
         imgsArrangeArr[i].pos = {
           top: getRangeRandom(hPostRangeY[0], hPostRangeY[1]),
           left: getRangeRandom(hPostRangeLORX[0], hPostRangeLORX[1])
-        }
+        };
      }
 
     if (imgsArrangeTopArr && imgsArrangeTopArr[0]) {
@@ -146,21 +147,20 @@ class AppComponent extends React.Component {
         }*/
       ]
      };
-    this.stageRef = React.createRef();
-    this.imgFigureRef = React.createRef();
+
   }
 
   //组件加载以后，为每张图片计算其位置的范围
   componentDidMount() {
     //首先拿到舞台大小
-    var stageDOM = this.stageRef.current,
+    var stageDOM = ReactDOM.findDOMNode(this.refs.stage),
         stageW = stageDOM.scrollWidth,
         stageH = stageDOM.scrollHeight,
         halfStageW = Math.ceil(stageW / 2),
         halfStageH = Math.ceil(stageH / 2);
 
     //拿到一个imageFigure的大小
-    var imgFigureDOM = this.imgFigureRef.current,
+    var imgFigureDOM = ReactDOM.findDOMNode(this.refs.imgFigure0),
         imgW = imgFigureDOM.scrollWidth,
         imgH = imgFigureDOM.scrollHeight,
         halfImgW = Math.ceil(imgW / 2),
@@ -170,7 +170,7 @@ class AppComponent extends React.Component {
     this.Constant.centerPos = {
       left: halfStageW - halfImgW,
       top: halfStageH - halfImgH
-    }
+    };
 
     //计算左侧，右侧区域图片排布位置的取值范围
     this.Constant.hPostRange.leftSecX[0] = -halfImgW;
@@ -201,10 +201,10 @@ class AppComponent extends React.Component {
             left:0,
             top:0
           }
-        }
+        };
       }
 
-      imgFigures.push(<ImageFigure data={value} ref={this.imgFigureRef} arrange={this.state.imgsArrangeArr[index]} />);
+      imgFigures.push(<ImageFigure data={value} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} />);
     }, this);
 
     // imageDatas.map(value => {
@@ -212,7 +212,7 @@ class AppComponent extends React.Component {
     // });
 
     return (
-      <section className="stage" ref={this.stageRef}>
+      <section className="stage" ref="stage">
         <section className="img-sec">
           {imgFigures}
         </section>

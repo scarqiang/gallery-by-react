@@ -20,6 +20,7 @@ module.exports = {
     publicPath: defaultSettings.publicPath
   },
   devServer: {
+    overlay: true,
     contentBase: './src/',
     historyApiFallback: true,
     hot: true,
