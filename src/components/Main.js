@@ -166,25 +166,42 @@ class AppComponent extends React.Component {
         halfImgW = Math.ceil(imgW / 2),
         halfImgH = Math.ceil(imgH / 2);
 
-    // 计算中心图片的位置点
-    this.Constant.centerPos = {
-      left: halfStageW - halfImgW,
-      top: halfStageH - halfImgH
-    };
+   // 计算中心图片的位置点
+    // this.Constant.centerPos = {
+    //   left: halfStageW - halfImgW,
+    //   top: halfStageH - halfImgH
+    // };
 
     //计算左侧，右侧区域图片排布位置的取值范围
-    this.Constant.hPostRange.leftSecX[0] = -halfImgW;
-    this.Constant.hPostRange.leftSecX[1] = -halfStageW - halfImgW *3;
-    this.Constant.hPostRange.rightSecX[0] = halfStageW + halfImgW;
-    this.Constant.hPostRange.rightSecX[1] = stageW - halfImgW;
-    this.Constant.hPostRange.y[0] = -halfImgH;
-    this.Constant.hPostRange.y[1] = stageH - halfImgH;
-  
-    // 计算上测区域图片排布位置的取值范围
-    this.Constant.vPostRange.topY[0] = -halfImgH;
-    this.Constant.vPostRange.topY[1] = -halfStageH - halfImgH * 3;
-    this.Constant.vPostRange.x[0] = halfImgW - imgW;
-    this.Constant.vPostRange.vPostRange.x[1] = halfImgW;
+    // this.Constant.hPostRange.leftSecX[0] = -halfImgW;
+    // this.Constant.hPostRange.leftSecX[1] = halfStageW - halfImgW *3;
+    // this.Constant.hPostRange.rightSecX[0] = halfStageW + halfImgW;
+    // this.Constant.hPostRange.rightSecX[1] = stageW - halfImgW;
+    // this.Constant.hPostRange.y[0] = -halfImgH;
+    // this.Constant.hPostRange.y[1] = stageH - halfImgH;
+
+    // // 计算上测区域图片排布位置的取值范围
+    // this.Constant.vPostRange.topY[0] = -halfImgH;
+    // this.Constant.vPostRange.topY[1] = -halfStageH - halfImgH * 3;
+    // this.Constant.vPostRange.x[0] = halfImgW - imgW;
+    // this.Constant.vPostRange.vPostRange.x[1] = halfImgW;
+
+
+    this.Constant = {
+      centerPos: {
+        left: halfStageW - halfImgW,
+        top: halfStageH - halfImgH
+      },
+      hPostRange: { //水平方向的取值范围
+        leftSecX: [-halfImgW, halfStageW - halfImgW * 3],
+        rightSecX: [halfStageW + halfImgW, stageW - halfImgW],
+        y: [-halfImgH, stageH - halfImgH]
+      },
+      vPostRange: {// 垂直方向的取值范围
+        x: [halfStageW - imgW, halfStageW],
+        topY: [-halfImgH, -halfStageH - halfImgH * 3]
+      }
+    };
 
     this.rearrange(0);
   }
@@ -206,10 +223,6 @@ class AppComponent extends React.Component {
 
       imgFigures.push(<ImageFigure data={value} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} />);
     }, this);
-
-    // imageDatas.map(value => {
-    //   imgFigures.push(<ImageFigure data={value} ref={'imageFigue' + index} />);
-    // });
 
     return (
       <section className="stage" ref="stage">
