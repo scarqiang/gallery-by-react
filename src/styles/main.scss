@@ -30,6 +30,8 @@ body, html {
 
     background-color: #dddddd;
 
+    perspective: 1800px;//3d动画效果，值越小对用户视觉效果越明显
+
     @at-root {
         .img-figure {
             position: absolute;
@@ -44,13 +46,20 @@ body, html {
             box-sizing: border-box;
             cursor: pointer;
 
-            //开始时散开动画
+            //设置变形的原点 x, y ,z, 默认是中心点 
             transform-origin: 0 50% 0;
             transform-style: preserve-3d;
-            //定义动画参数
+            /* 定义动画参数
+             * transform .6s ease-in-out： 如果transform发生了变化，在0.6秒会有个动画效果 - 相片翻转时候
+             * left .6s ease-in-out：当元素left值发生变化时候，会在0.6秒发生动画 - 相片开场布局位置的时候
+             * top .6s ease-in-out：当元素top值发生变化时候，会在0.6秒发生动画 - 相片开场布局位置的时候
+             */
             transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
             //点击后翻转
             &.is-inverse {
+                /*
+                translate(x, y) 参数为：根据x轴和y轴重新定位元素位置，只传一个参数代表只位移x轴320px
+                */
                 transform: translate(320px) rotateY(180deg);
             }
         }
