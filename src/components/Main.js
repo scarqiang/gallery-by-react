@@ -74,7 +74,7 @@ class ImageFigure extends React.Component {
   
           <figcaption>
             <h2 className="img-title">{this.props.data.title}</h2>
-            <div className="img-back" onClick={this.handleClick}>
+            <div className="img-back">
               <p>
                 {this.props.data.desc}
               </p>
@@ -113,7 +113,7 @@ class AppComponent extends React.Component {
       var imgsArrangeArr = this.state.imgsArrangeArr;
 
       imgsArrangeArr[index].isInverse = !imgsArrangeArr[index].isInverse;
-
+      alert('you click it');
       this.setState({
         imgsArrangeArr: imgsArrangeArr
       });

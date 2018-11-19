@@ -43,10 +43,13 @@ body, html {
 
             box-sizing: border-box;
             cursor: pointer;
+
+            //开始时散开动画
             transform-origin: 0 50% 0;
             transform-style: preserve-3d;
+            //定义动画参数
             transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
-
+            //点击后翻转
             &.is-inverse {
                 transform: translate(320px) rotateY(180deg);
             }
@@ -87,11 +90,13 @@ body, html {
               background-color: #fff;
 
               box-sizing: border-box;
+              //让div翻转到背面
               transform: rotateY(180deg) translateZ(1px);
-              backface-visibility: hidden;
+              backface-visibility: hidden; //属性指定当元素背面朝向观察者时是否可见
 
               p {
                 margin: 0;
+                word-wrap:break-word;
               }
             }
         }
