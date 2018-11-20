@@ -61,8 +61,9 @@ class ImageFigure extends React.Component {
 
       //如果图片的旋转角度有值并且不为0，添加旋转角度
       if (this.props.arrange.rotate) {
-        (['-moz-', '-ms-', '-webkit', '']).forEach(function (value) {
-          styleObj[value + 'transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)';
+        //css样式对象的key用样式名的驼峰标识写法， 值是用样式的值，这里ms特殊不需要大写
+        (['MozTransform', 'msTransform', 'WebkitTransform', '']).forEach(function (value) {
+          styleObj[value] = 'rotate(' + this.props.arrange.rotate + 'deg)';
         }, this);
       }
 
@@ -346,8 +347,9 @@ class AppComponent extends React.Component {
         };
       }
 
-      imgFigures.push(<ImageFigure data={value} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index).bind(this)} center={this.center(index).bind(this)}/>);
-      controllerUnit.push(<ControllerUnit arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index).bind(this)} center={this.center(index).bind(this)}/>)
+      //元素添加key值，复用组件，减少react性能消耗
+      imgFigures.push(<ImageFigure key={index} data={value} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index).bind(this)} center={this.center(index).bind(this)}/>);
+      controllerUnit.push(<ControllerUnit key={key} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index).bind(this)} center={this.center(index).bind(this)}/>)
     }, this);
 
     return (

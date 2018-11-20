@@ -105,7 +105,7 @@ body, html {
 
               box-sizing: border-box;
               //让div翻转到背面
-              transform: rotateY(180deg) translateZ(1px);
+              transform: rotateY(180deg) translateZ(1px);//translateZ(1px);修复Safaribug
               backface-visibility: hidden; //属性指定当元素背面朝向观察者时是否可见
 
               p {
