@@ -8,4 +8,4 @@ c. 提交到gh-pages时候需要先commit dist目录的文件
 
 3. index.html 文件中的绝地路径 “/assets/app.js”要改成相对路径 “assets/app.js”
 
-4. 图片路径
+4. wepack的 output publicPath（base.js） 图片路径需要修改 'asset/' ，图片才可以加载出来
