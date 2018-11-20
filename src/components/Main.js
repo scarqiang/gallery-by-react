@@ -349,7 +349,7 @@ class AppComponent extends React.Component {
 
       //元素添加key值，复用组件，减少react性能消耗
       imgFigures.push(<ImageFigure key={index} data={value} ref={'imgFigure' + index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index).bind(this)} center={this.center(index).bind(this)}/>);
-      controllerUnit.push(<ControllerUnit key={key} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index).bind(this)} center={this.center(index).bind(this)}/>)
+      controllerUnit.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index).bind(this)} center={this.center(index).bind(this)}/>)
     }, this);
 
     return (
