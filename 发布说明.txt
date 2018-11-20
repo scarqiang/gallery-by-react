@@ -1,5 +1,11 @@
 1. 发布使用可以通过webpack的功能发布 终端运行：npm run dist，之后项目就会打包到dist目录
+
 2. github提供了托管静态html，里面发布项目的web页的服务，github pages (gh-pages)
 使用git执行以下命令提交： git subtree push --prefix=dist origin  gh-pages
-其中prefix参数用来指定本地推送目录， dist为需要发布的目录
-其中github的访问地址为 https://github用户名.github.io/项目名/
+a. 其中prefix参数用来指定本地推送目录， dist为需要发布的目录
+b. 其中github的访问地址为 https://github用户名.github.io/项目名/
+c. 提交到gh-pages时候需要先commit dist目录的文件
+
+3. index.html 文件中的绝地路径 “/assets/app.js”要改成相对路径 “assets/app.js”
+
+4. 图片路径
