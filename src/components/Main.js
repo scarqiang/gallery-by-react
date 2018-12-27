@@ -132,6 +132,7 @@ class ControllerUnit extends React.Component {
 
 class AppComponent extends React.Component {
 
+//typescript 书写方式
   Constant: {
     centerPos: {
       left: 0,
